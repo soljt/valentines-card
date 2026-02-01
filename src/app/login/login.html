@@ -1,3 +1,8 @@
+@if (isVerifying()) {
+    <div class="min-h-[200px] flex items-center justify-center">
+      <div class="w-10 h-10 border-4 border-rose-300 border-t-transparent rounded-full animate-spin"></div>
+    </div>
+}@else {
 <div class="min-h-screen bg-rose-50 font-sans">
   
   <div class="w-full bg-gradient-to-r from-rose-400 to-pink-400 py-20 shadow-2xl border-b-8 border-rose-600">
@@ -39,3 +44,4 @@
     </div>
   </main>
 </div>
+}

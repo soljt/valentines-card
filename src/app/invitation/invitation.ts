@@ -7,13 +7,15 @@ import { HttpClient } from '@angular/common/http';
   selector: 'app-invitation',
   standalone: true,
   imports: [CommonModule],
-  templateUrl: './invitation.html'
+  templateUrl: './invitation.html',
+  styleUrls: ['./invitation.css']
 })
 export class Invitation {
   noButtonPos = { x: 0, y: 0 };
   isButtonMoved = false;
 
   constructor(private router: Router, private http: HttpClient) {}
+
 
   moveButton() {
     // Generate random coordinates within the viewport
@@ -39,3 +41,4 @@ export class Invitation {
     });
   }
 }
+

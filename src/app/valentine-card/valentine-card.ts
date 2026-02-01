@@ -60,11 +60,13 @@ export class ValentineCard implements OnInit, OnDestroy {
 
   logout() {
     try {
-      localStorage.removeItem('val_token');
+      this.http.post('/api/reset', {}).subscribe(() => {
+        localStorage.removeItem('val_token');
+        this.router.navigate(['/']);
+      });
     } catch (e) {
       // ignore storage errors, but still navigate
     }
-    this.router.navigate(['/']);
   }
 
   // Called from the img (load) event. Adds classes to trigger CSS animations.
