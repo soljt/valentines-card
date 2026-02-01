@@ -1,5 +1,6 @@
 services:
   backend:
+    container_name: valentines-backend
     build: ./backend
     env_file:
       - /backend/.env
@@ -7,14 +8,18 @@ services:
       - internal
     restart: unless-stopped
   frontend:
+    container_name: valentines-frontend
     build: ./frontend
     volumes:
       - ./frontend/nginx.conf:/etc/nginx/conf.d/default.conf
-    ports:
-      - "80:80"
+    # ports:
+    #   - "80:80"
     networks:
       - internal
+      - web
 
 networks:
   internal:
     driver: bridge
+  web:
+    external: true
