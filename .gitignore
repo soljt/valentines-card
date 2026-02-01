@@ -1,0 +1,7 @@
+backend/assets/*
+*/.env
+
+*/node_modules
+npm-debug.log
+
+proxy/
