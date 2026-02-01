@@ -1,18 +1,40 @@
-<div class="fixed inset-0 z-0 bg-love-pattern animate-love-drift animate-soft-glow"></div>
+<div class="fixed inset-0 z-0 bg-valentine-tile animate-bg-drift"></div>
 
-<div class="min-h-screen flex flex-col items-center p-4 relative z-10 gap-16">
+<!-- top bar (fixed, stays visible) -->
+<div class="absolute inset-x-0 top-4 px-4 z-20">
+  <div class="max-w-6xl mx-auto flex justify-between items-center">
+    <button
+      (click)="reset()"
+      aria-label="Back to the invitation"
+      class="text-rose-300 hover:text-rose-500 transition-colors text-xs uppercase tracking-widest font-bold
+             bg-white/30 backdrop-blur-sm px-3 py-2 rounded-md shadow-sm"
+    >
+      ↺ Back to the invitation
+    </button>
+
+    <button
+      (click)="logout()"
+      aria-label="Re-lock"
+      class="text-rose-300 hover:text-rose-500 transition-colors text-xs uppercase tracking-widest font-bold
+             bg-white/30 backdrop-blur-sm px-3 py-2 rounded-md shadow-sm"
+    >
+      🔒 Re-lock
+    </button>
+  </div>
+</div>
+
+<div class="min-h-screen flex flex-col items-center p-4 relative z-10 gap-12 pt-28">
   
-  <button (click)="reset()" class="absolute top-4 right-4 text-rose-300 hover:text-rose-500 transition-colors text-xs uppercase tracking-widest font-bold">
-    ↺ Reset Journey
-  </button>
-  
-  <div class="w-full max-w-6xl mx-auto py-6 px-6 text-center">
-      <h1 class="text-4xl md:text-5xl font-extrabold text-rose-600 tracking-tight">
+  <div class="w-full max-w-4xl mx-auto text-center">
+    <div class="inline-block bg-white backdrop-blur-md border border-white/30 rounded-2xl px-6 py-5 shadow-lg">
+      <h1 class="text-3xl md:text-4xl font-extrabold text-rose-600 tracking-tight leading-tight">
         Yippee!!! You're my Valentine!!
       </h1>
+      <p class="mt-2 text-sm text-rose-700/90">↓ You get one awesome photo-card in return ↓</p>
+    </div>
   </div>
 
-  <div class="relative bg-white w-full max-w-sm shadow-2xl rounded-sm border-[12px] border-white p-6">
+  <div class="relative bg-white w-full max-w-sm shadow-2xl rounded-xl border-8 border-white p-6">
     <div class="w-full aspect-square bg-rose-50 mb-6 flex items-center justify-center overflow-hidden relative group border border-rose-100">
       
       <div class="absolute inset-0 flex justify-between items-center px-2 opacity-0 group-hover:opacity-100 transition-opacity z-20">
