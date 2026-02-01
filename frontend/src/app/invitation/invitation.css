@@ -1,0 +1,62 @@
+/* Question-mark background (put after other styles) */
+.qs-bg {
+  position: absolute;
+  inset: 0;
+  z-index: 0;                 /* keep behind the page content */
+  pointer-events: none;       /* don't block clicks */
+  overflow: hidden;
+}
+
+/* single mark styles — use CSS variables for placement + timing */
+.qs-bg span {
+  position: absolute;
+  left: calc(var(--x) * 1%);
+  top: calc(var(--y) * 1%);
+  transform: translate(-50%, -50%) scale(1);
+  font-weight: 900;
+  font-family: ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue";
+  line-height: 1;
+  color: rgba(248, 8, 144, 0.18); /* soft rose tint */
+  text-shadow: 0 6px 18px rgba(0,0,0,0.06);
+  font-size: var(--size, 6vw);
+  will-change: transform, opacity;
+  mix-blend-mode: screen;
+  opacity: 1;
+
+  /* two simultaneous animations:
+     - pulse (scale + opacity)
+     - slow float (tiny vertical drift) */
+  animation:
+    qs-pulse 2.2s cubic-bezier(.2,.9,.2,1) var(--delay) infinite,
+    qs-float 8s ease-in-out calc(var(--delay) * -1) infinite;
+}
+
+/* pulse animation: subtle pop-in/out */
+@keyframes qs-pulse {
+  0%   { opacity: 0.2; transform: translate(-50%,-50%) scale(0.95); }
+  30%  { opacity: 0.6; transform: translate(-50%,-50%) scale(1.06); }
+  60%  { opacity: 0.9; transform: translate(-50%,-50%) scale(1.02); }
+  100% { opacity: 0.6; transform: translate(-50%,-50%) scale(0.98); }
+}
+
+/* slow, large-range float to keep the background lively */
+@keyframes qs-float {
+  0%   { transform: translate(-50%,-50%) translateY(0); }
+  50%  { transform: translate(-50%,-50%) translateY(-10px); }
+  100% { transform: translate(-50%,-50%) translateY(0); }
+}
+
+/* ensure main page content sits above the qs-bg */
+.min-h-screen > .text-center,
+.min-h-screen > *:not(.qs-bg) {
+  position: relative;
+  z-index: 10;
+}
+
+/* Respect users who prefer reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  .qs-bg span {
+    animation: none;
+    opacity: 0.12 !important;
+  }
+}

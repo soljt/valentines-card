@@ -1,0 +1,70 @@
+<div class="min-h-screen bg-rose-100 flex flex-col items-center justify-center p-6 relative overflow-hidden">
+    <div class="qs-bg" aria-hidden="true">
+    <!-- mid-upper-left cluster -->
+    <span style="--x:6;  --y:8;   --size:6.8vw; --delay:0s">?</span>
+    <span style="--x:14; --y:16;  --size:5.6vw; --delay:0.28s">?</span>
+    <span style="--x:22; --y:10;  --size:5.0vw; --delay:0.52s">?</span>
+
+    <!-- upper / center -->
+    <span style="--x:34; --y:6;   --size:7.4vw; --delay:0.12s">?</span>
+    <span style="--x:46; --y:12;  --size:6.0vw; --delay:0.36s">?</span>
+    <span style="--x:58; --y:8;   --size:6.6vw; --delay:0.68s">?</span>
+
+    <!-- mid-left / mid-center -->
+    <span style="--x:10; --y:38;  --size:5.2vw; --delay:0.44s">?</span>
+    <span style="--x:30; --y:34;  --size:6.2vw; --delay:0.76s">?</span>
+    <span style="--x:48; --y:44;  --size:8.0vw; --delay:0.32s">?</span>
+
+    <!-- mid-upper-right -->
+    <span style="--x:66; --y:26;  --size:5.6vw; --delay:0.96s">?</span>
+    <span style="--x:78; --y:18;  --size:5.0vw; --delay:0.18s">?</span>
+
+    <!-- bottom-left cluster -->
+    <span style="--x:8;  --y:70;  --size:5.4vw; --delay:0.6s">?</span>
+    <span style="--x:22; --y:82;  --size:6.0vw; --delay:0.84s">?</span>
+
+    <!-- bottom / mid-bottom -->
+    <span style="--x:40; --y:76;  --size:6.8vw; --delay:0.28s">?</span>
+    <span style="--x:54; --y:68;  --size:5.0vw; --delay:0.5s">?</span>
+
+    <!-- bottom-right heavy cluster -->
+    <span style="--x:70; --y:78;  --size:6.6vw; --delay:0.14s">?</span>
+    <span style="--x:82; --y:86;  --size:6.2vw; --delay:0.4s">?</span>
+    <span style="--x:90; --y:72;  --size:5.2vw; --delay:0.72s">?</span>
+    <span style="--x:86; --y:54;  --size:4.8vw; --delay:0.96s">?</span>
+
+    <!-- a single central accent -->
+    <span style="--x:60; --y:48;  --size:7.8vw; --delay:0.34s">?</span>
+    </div>
+
+
+  <div class="text-center z-10">
+    <h4 class="text-3xl md:text-5xl font-black text-rose-600 mb-12 drop-shadow-md">
+        Great job baby! Now...
+    </h4>
+    <h1 class="text-5xl md:text-7xl font-black text-rose-600 mb-12 drop-shadow-md">
+      Will you be my Valentine?🥺🙏
+    </h1>
+
+    <div class="flex flex-col md:flex-row gap-8 justify-center items-center">
+      <button 
+        (click)="onYes()"
+        class="bg-green-500 hover:bg-green-600 text-white text-3xl font-bold px-16 py-6 rounded-full shadow-2xl transform hover:scale-110 active:scale-95 transition-all">
+        YES! 💖
+      </button>
+
+      <button 
+        (mouseenter)="moveButton()"
+        (touchstart)="moveButton()"
+        [ngStyle]="isButtonMoved ? {
+          'position': 'fixed', 
+          'left.px': noButtonPos.x, 
+          'top.px': noButtonPos.y,
+          'z-index': '100'
+        } : {}"
+        class="bg-gray-400 text-white text-l font-bold px-6 py-4 rounded-full transition-all duration-75">
+        No
+      </button>
+    </div>
+  </div>
+</div>

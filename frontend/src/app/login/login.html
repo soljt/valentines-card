@@ -1,0 +1,47 @@
+@if (isVerifying()) {
+    <div class="min-h-[200px] flex items-center justify-center">
+      <div class="w-10 h-10 border-4 border-rose-300 border-t-transparent rounded-full animate-spin"></div>
+    </div>
+}@else {
+<div class="min-h-screen bg-rose-50 font-sans">
+  
+  <div class="w-full bg-gradient-to-r from-rose-400 to-pink-400 py-20 shadow-2xl border-b-8 border-rose-600">
+    <div class="container mx-auto px-4 text-center animate-pulse">
+      <h1 class="text-5xl md:text-7xl font-black text-white uppercase tracking-tighter drop-shadow-lg ">
+        ❤️ Access Restricted ❤️
+      </h1>
+      <p class="mt-4 text-rose-100 text-xl font-medium italic">
+        Authorized Personnel Only
+      </p>
+    </div>
+  </div>
+
+  <main class="flex flex-col items-center justify-center pt-16 px-4">
+    <div class="text-center mb-8">
+      <span class="text-6xl">🔒</span>
+      <h2 class="text-2xl font-bold text-rose-800 mt-4">The following invitation is exclusively meant for the prettiest girl in the entire world...</h2>
+    </div>
+    <div class="w-full max-w-md bg-white/70 backdrop-blur-xl p-10 rounded-[3rem] shadow-2xl border-4 border-white">
+      <div class="space-y-6">
+        <input 
+          [(ngModel)]="password" 
+          type="password" 
+          placeholder="Hint: you know her very well..."
+          [disabled]="isLoading()"  class="..."
+          class="w-full px-6 py-4 rounded-2xl border-2 border-rose-200 focus:border-rose-500 focus:ring-4 focus:ring-rose-200 transition-all outline-none text-lg"
+          (keyup.enter)="checkPassword()"
+        >
+        
+        <button 
+          (click)="checkPassword()"
+          class="w-full bg-rose-500 hover:bg-rose-600 text-white font-bold py-4 rounded-2xl shadow-lg transform active:scale-95 transition-all text-xl"
+          [disabled]="isLoading()"
+        >
+          Submit
+        </button>
+        <div *ngIf="errorMessage()" class="..."> {{ errorMessage() }} </div>
+      </div>
+    </div>
+  </main>
+</div>
+}
