@@ -3,7 +3,7 @@ services:
     container_name: valentines-backend
     build: ./backend
     env_file:
-      - /backend/.env
+      - ./backend/.env
     networks:
       - internal
     restart: unless-stopped
