@@ -1,10 +1,17 @@
-FROM node:20-alpine
+FROM node:20-alpine AS build
 WORKDIR /app
-# Install Angular CLI globally
-RUN npm install -g @angular/cli
-COPY package*.json ./
-RUN npm install
+
 COPY . .
-EXPOSE 4200
-# Run ng serve and allow connections from the proxy
-CMD ["ng", "serve", "--host", "0.0.0.0", "--poll", "2000"]
+
+RUN npm install
+RUN npm run build
+
+# Nginx stage
+FROM nginx:alpine
+
+# Copy the build output to Nginx's public directory
+COPY --from=build /app/dist/valentines/browser /usr/share/nginx/html
+
+EXPOSE 80
+
+CMD ["nginx", "-g", "daemon off;"]

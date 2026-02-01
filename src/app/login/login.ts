@@ -82,6 +82,8 @@ export class Login implements OnInit {
 
         if (err.status === 401) {
            this.errorMessage.set("That's not the secret code! 💔");
+        } else if (err.status === 429) {
+          this.errorMessage.set(err.error.message);
         } else {
            this.errorMessage.set("Server error. Is the backend running?");
         }
