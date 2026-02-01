@@ -21,7 +21,9 @@
       </div>
 
       @if (photoUrl()) {
-        <img [src]="photoUrl()" class="card-image">
+        <div class="image-container w-full h-full">
+          <img [src]="photoUrl()" class="card-image" (load)="onImageLoad($event)" alt="Memory photo">
+        </div>
       } @else {
         <span class="text-4xl">📸</span>
       }
