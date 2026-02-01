@@ -1,0 +1,35 @@
+<div class="min-h-screen bg-rose-100 flex flex-col items-center justify-center p-6 relative overflow-hidden">
+  
+  <div class="absolute top-10 left-10 text-6xl opacity-20 animate-bounce">🎈</div>
+  <div class="absolute bottom-10 right-10 text-6xl opacity-20 animate-bounce delay-75">🎈</div>
+
+  <div class="text-center z-10">
+    <h4 class="text-3xl md:text-5xl font-black text-rose-600 mb-12 drop-shadow-md">
+        Great job baby! Now...
+    </h4>
+    <h1 class="text-5xl md:text-7xl font-black text-rose-600 mb-12 drop-shadow-md">
+      Will you be my Valentine?
+    </h1>
+
+    <div class="flex flex-col md:flex-row gap-8 justify-center items-center">
+      <button 
+        (click)="onYes()"
+        class="bg-green-500 hover:bg-green-600 text-white text-3xl font-bold px-16 py-6 rounded-full shadow-2xl transform hover:scale-110 active:scale-95 transition-all">
+        YES! 💖
+      </button>
+
+      <button 
+        (mouseenter)="moveButton()"
+        (touchstart)="moveButton()"
+        [ngStyle]="isButtonMoved ? {
+          'position': 'fixed', 
+          'left.px': noButtonPos.x, 
+          'top.px': noButtonPos.y,
+          'z-index': '100'
+        } : {}"
+        class="bg-gray-400 text-white text-xl font-bold px-10 py-4 rounded-full transition-all duration-75">
+        No
+      </button>
+    </div>
+  </div>
+</div>
